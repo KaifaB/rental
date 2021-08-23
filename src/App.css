@@ -1,38 +1,440 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+}
+body{
+  background: black;
+  overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header{
+  height: 80px;
+  background: black;
+  color:rgb(216, 217, 218);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  border-bottom: grey 1px solid;
+}
+.header h1, .hamburger{
+  margin: 0 10px;
+}
+.header h1{
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  transition: 0.4s;
+}
+.header h1:hover{
+  color: white;
+  cursor: pointer;
+}
+.hamburger{
+  width: 40px;
+  height: 40px;
+  transition: 0.3s;
+}
+.hamburger:hover{
+  cursor: pointer;
   color: white;
 }
+.cart-icon{
+  height: 34px;
+  width: 34px;
+  transition: 0.3s;
+}
+.cart-icon:hover{
+  color:white;
+  cursor:pointer;
+}
+.slider {
+  display: flex;
+  justify-content: space-between;
+  padding: 60px 0;
+}
+.flex{
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+.flex-start{
+  display: flex;
+}
+.flex-end{
+  display:flex;
+  justify-content: flex-end;
+}
+.vertical{
+  display:flex;
+  flex-direction: column;
+  align-self:center;
+  align-items:center;
+}
+.image-home{
+  margin: 0 auto;
+  height: 80vh;
+}
+.slider::after{
+  top: 140px;
+  left: 0;
+  content:'';
+  position: absolute;
+  width: 650px;
+  height: 650px;;
+  z-index: -1;
+  transition: all .2s ease-in-out;
+}
+.slider::after:hover{
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+}
+.backing {
+  margin-left: 40px;
+  border-radius:50%;
+  opacity: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  animation-duration: 1s;
+}
+.dialate {
+  animation-name: dialate;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  animation-duration: 0.7s;
+}
+.slide{
+  display:flex;
+  height: 0;
+  opacity: 0;
+  background: none;
+}
+.active{
+  margin: 0 auto;
+  height: 70vh;
+  width: 700px;
+  opacity: 1;
+  animation-name: slidein;
+  animation-timing-function: ease;
+  animation-duration: 0.6s;
+}
+.whole{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 auto;
+}
+.right{
+  margin-left:30px;
+}
+.logo img{
+  margin-top: 100px;
+  width: 300px;
+  opacity: 0;
+  animation-name: fadein;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  animation-duration: 1s;
+  animation-delay: 0.6s;
+}
+.contain-mb{
+  margin-left: 60px;
+  margin-top: 50px;
+  opacity: 0;
+  display:flex;
+  width: 200px;
+  height: 100%;
+  flex-direction: column;
+  animation-name: fadein;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  animation-duration: 1s;
+  animation-delay: 1.0s;
+}
+.mb{
+  margin: 10px 0;
+  font-size: 1.5rem;
+  width: 100% !important;
+  padding: 0.25em 1em;
+  border-radius: 0.25em;
+  width: 100px;
+  transition-duration: 1s ease;
 
-.App-link {
-  color: #61dafb;
+}
+.rent{
+  color: #39FF14;
+  background: none;
+  border: #39FF14 0.1em solid;
+  text-shadow: 
+    0 0 0.125em hsl(0 0% 100% / 0.5),
+    0 0 0.25em currentColor;
+  box-shadow: inset 0 0 0.5em 0 #39FF14,
+  0 0 0.5em 0 #39FF14;
+  transition: 0.3s ease;
+
+}
+.rent:hover{
+  cursor: pointer;
+  color: white;
+  background: #39FF14;
+}
+.buy{
+  text-shadow: 
+    0 0 0.125em hsl(0 0% 100% / 0.5),
+    0 0 0.25em currentColor;
+  box-shadow: inset 0 0 0.5em 0 rgb(241, 86, 30),
+  0 0 0.5em 0 rgb(241, 86, 30);
+  border: solid rgb(241, 86, 30) 2px;
+  color:aliceblue;
+  background: none;
+  transition: 0.3s ease;
+}
+.buy:hover{
+  cursor: pointer;
+  background: rgb(241, 86, 30);
+}
+.arrows{
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  color: grey;
+  cursor: pointer;
+  z-index: 2;
+}
+.arrows:hover{
+  color: white;
+  cursor: pointer;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+.up{
+  position: absolute;
+  top: 80px;
+  left: 40%;
+  margin-top: 6px;
+  animation-name: bounce-up;
+  animation-timing-function: ease;
+}
+.down{
+  position: absolute;
+  left: 40%;
+  bottom:10px;
+  animation-name: bounce-down;
+  animation-timing-function: ease;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.description{
+  margin: 0 28px;
+  display:flex;
+  flex-direction: column;
+  align-self:center;
+  align-items:center;
+  color: white;
+}
+.description h1{
+  font-size: 42px;
+}
+.description p{
+  margin: 12px 0;
+}
+.praction{
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart{
+  display:none;
+  margin: 50px 30px;
+  width: auto;
+  border: rgb(216, 217, 218) solid 1px;
+}
+.cart-header{
+  display:flex;
+  width: 100%;
+  height: 100px;
+  background:rgb(216, 217, 218);
+  align-items:flex-end;
+  font-size: 2rem;
+}
+.cart-header h1{
+  padding: 0 24px;
+}
+.border-top{
+  border-top:white solid 1px;
+}
+.cart-item{
+  height: 80px;
+  width: 100%;
+  align-items: center;
+  color:white;
+}
+.cart-box{
+  border-top: rgb(216, 217, 218) solid 1px;
+  height: 80px;
+  width: 100%;
+  align-items: center;
+  color:white;
+}
+.cart-item div{
+  padding: 0 20px;
+}
+.image-container{
+  margin: 8px 8px;
+  height: auto;
+  width: auto;
+}
+.item-background{
+  background: grey;
+  border-radius: 50%;
+  height: 80px;
+}
+.cart-img{
+  border:none !important;
+  height:100%;
+  width:80px;
+}
+.item-name{
+  padding: 0 12px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  color:white;
+  height: 100%;
+  border-left:solid white 1px;
+  vertical-align: middle;
+}
+.item-price{
+  padding: 0 12px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 80px;
+  color:white;
+  border-left:solid white 1px;
+}
+.align{
+  color:white;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+.align p:nth-child(1){
+  margin-right: 6px;
+}
+.update{
+  padding: 0 10px;
+  height: 100%;
+  border-left: solid white 1px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.update input{
+  width: 20px;
+  height: 16px;
+}
+.update button{
+  width: 50px;
+  height: 20px;
+}
+.trash-container{
+  display:flex;
+  vertical-align: middle;
+}
+.trash{
+  padding: 0 10px;
+  display: flex;
+  align-self: center;
+  color:grey;
+  width: 30px;
+  height: 30px;
+}
+.trash:hover{
+  color:white;
+  cursor: pointer;
+}
+.modal{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  margin: 150px auto;
+  width: 60%;
+  height: 300px;
+  border-radius: 15px;
+  background: grey;
+}
+.modal h1{
+  margin-top: 20px;
+}
+.modal button{
+  width: 100px;
+  height: 50px;
+  margin: 40px 20px;
+}
+.gone{
+  display: none !important;
+}
+.appear-flex{
+  display: flex !important;
+}
+.appear-block{
+  display: block !important;
+}
+.exit{
+  margin: 8px 20px;
+  display:flex;
+  align-self: flex-end;
+  color:black;
+  width:40px;
+  height:40px;
+}
+.exit:hover{
+  cursor: pointer;
+}
+@keyframes bounce-up {
+  0%   { transform: scale(1,1)      translateY(0); }
+  10%  { transform: scale(1.1,.9)   translateY(0); }
+  30%  { transform: scale(.9,1.1)   translateY(-20px); }
+  50%  { transform: scale(1.05,.95) translateY(0); }
+  57%  { transform: scale(1,1)      translateY(-7px); }
+  64%  { transform: scale(1,1)      translateY(0); }
+  100% { transform: scale(1,1)      translateY(0); }
+}
+@keyframes bounce-down {
+  0%   { transform: scale(1,1)      translateY(0); }
+  10%  { transform: scale(1.1,.9)   translateY(0); }
+  30%  { transform: scale(.9,1.1)   translateY(20px); }
+  50%  { transform: scale(1.05,.95) translateY(0); }
+  57%  { transform: scale(1,1)      translateY(-7px); }
+  64%  { transform: scale(1,1)      translateY(0); }
+  100% { transform: scale(1,1)      translateY(0); }
+}
+@keyframes slidein {
+  0% { transform: translateY(-300px);
+    opacity: 0;}
+  100% { transform: translateY(0px);
+    opacity: 1;}
+}
+@keyframes slideout {
+  0% { transform: translateY(0);}
+  100% { transform: translateY(300px);}
+}
+@keyframes fadein {
+  0% { opacity: 0;}
+  100% { opacity: 1;}
+}
+@keyframes backing {
+  0% { opacity: 0;}
+  100% { opacity: 1;}
+}
+@keyframes dialate {
+  0% { opacity: 1;
+    transform: scale(1);
   }
-  to {
-    transform: rotate(360deg);
+  50% {transform: scale(1.1);}
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
+  
 }
