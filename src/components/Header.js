@@ -1,5 +1,4 @@
 import React from 'react';
-import { BsList } from 'react-icons/bs'
 import { useHistory } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa'
 
@@ -11,12 +10,20 @@ const Header = props => {
     const seeCart = () => {
         history.push('/cart');
     }
+    const menu = () => {
+        document.getElementById('nav-icon1').classList.toggle('open');
+        document.getElementById('menu').classList.toggle("appear");
+    }
     return(
         <div className="header">
             <h1 onClick={goHome}>Rental Stars</h1>
-            <div>
+            <div className="top-nav">
                 <FaShoppingCart className="cart-icon" onClick={seeCart}/>
-                <BsList className="hamburger" />
+                <div id="nav-icon1" onClick={menu}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     )

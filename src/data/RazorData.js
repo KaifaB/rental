@@ -1,6 +1,6 @@
-import razorMain from '../img/freego-black-main.png'
-import razor1 from '../img/freego-black-1.png'
-import razor2 from '../img/freego-black-2.png'
+import razorMain from '../img/razor-red-main.png'
+import razor1 from '../img/razor-red-1.png'
+import razor2 from '../img/razor-red-2.png'
 export const RazorData = [
     {
         image: razorMain

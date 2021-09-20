@@ -11,7 +11,8 @@ const Buy = (props) => {
             'price': props.info.price, 
             'quantity' : 1,
             'type' : props.info.type,
-            'id' : props.info.id
+            'id' : props.info.id,
+            'own' : "buy"
         }
         //Get array of cart from localstorage
         if (JSON.parse(localStorage.getItem('cart')) !== null){
@@ -44,9 +45,9 @@ const Buy = (props) => {
                 <h1>{props.info.title}</h1>
                 <p>{props.info.description}</p>
                 <div className="praction">
-                    <button onClick={buyThis}>Buy Now</button>
                     <h2>Only ${props.info.price}</h2>
                 </div>
+                <button onClick={buyThis} className="buy" id="buy-now">Buy Now</button>
             </div>
         </div>
     )

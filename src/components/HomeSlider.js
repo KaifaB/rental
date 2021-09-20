@@ -11,7 +11,7 @@ const HomeSlider = ({slides, color}) => {
         let type = [
             'freego',
             'razor',
-            'other'
+            'nanrobot'
         ];
         history.push(`/buy/${type[num]}`);
 
@@ -21,7 +21,7 @@ const HomeSlider = ({slides, color}) => {
         let type = [
             'freego',
             'razor',
-            'other'
+            'nanrobot'
         ];
         history.push(`/rent/${type[num]}`);
 

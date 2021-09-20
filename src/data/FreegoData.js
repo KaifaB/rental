@@ -15,7 +15,7 @@ export const FreegoData = [
 
 export const FreegoText = {
     title : 'Freego Scooter 3500z',
-    description : '"The electric scooter your mother warned you about"',
+    description : '"The electric scooter your mother warned you about."',
     price : 499.99,
     rent: 49.99,
     type : 'Freego',

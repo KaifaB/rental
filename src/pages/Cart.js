@@ -1,8 +1,9 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-//Cart item component
+//Components
 import CartItem from '../components/CartItem';
+import Modal from '../components/Modal';
 
 Number.prototype.toFixedDown = function(digits) {
     var re = new RegExp("(\\d+\\.\\d{" + digits + "})(\\d)"),
@@ -10,43 +11,69 @@ Number.prototype.toFixedDown = function(digits) {
     return m ? parseFloat(m[1]) : this.valueOf();
 };
 
+//Get array of cart from localstorage
+const itemCart = JSON.parse(localStorage.getItem('cart'));
+//Initialize amount
+let amount = 0;
+//get total from cart
+if (itemCart !== null) {
+    itemCart.map(curr =>{
+        amount += curr.price*curr.quantity
+        return 0;
+    })
+}
+
 const Cart = (props) => {
-    //Get array of cart from localstorage
-    const itemCart = JSON.parse(localStorage.getItem('cart'));
-    //Initialize amount
-    let amount = 0;
-    //State of quantity
-    const [total, setTotal] = useState(amount);
-    //get total from cart
-    if (itemCart !== null) {
-        itemCart.map(curr =>{
-            amount += curr.price*curr.quantity
-            return 0;
-        })
-    }
+    const history = useHistory();
+
+    const [total, setTotal] = useState(0);
     //Rerender componenet after updating an items quantity
     useEffect(() => {
         document.getElementsByClassName("update-amount").value = "";
+        console.log("cart refreshed")
     }, [total]);
+    
+      //Get array of cart from localstorage
+      const itemCart = JSON.parse(localStorage.getItem('cart'));
 
+      //Initialize amount
+      let amount = 0;
+      //get total from cart
+      if (itemCart !== null) {
+          itemCart.map(curr =>{
+              amount += curr.price*curr.quantity
+              return 0;
+          })
+      }
+    const checkout = () => {
+        history.push('/checkout');
+    }
+    console.log(itemCart);
     if (itemCart !== null) {
     return(
         <div>
+            <Modal 
+                setTotal={setTotal}
+            />
             <div className="cart appear-block">
                 <div className="cart-header">
                     <h1>Your Cart</h1>
                 </div>
                 {itemCart.map((curr, index) => {
                     return(
-                        <CartItem 
+                        <CartItem
+                        Freego={props.Freego}
+                        Razor={props.Razor}
+                        Nanrobot={props.Nanrobot}
                         name={curr.item}
                         price={curr.price}
                         quantity={curr.quantity}
                         type={curr.type}
                         id={curr.id}
-                        changeTotal={total => setTotal(total)}
+                        setTotal={total => setTotal(total)}
                         index={index}
                         key={index}
+                        own={curr.own}
                         />
                     )
                 })
@@ -59,7 +86,7 @@ const Cart = (props) => {
                 </div>
             </div>
             <div>
-                <button className="checkout">Checkout</button>
+                <button id="checkout" onClick={checkout}>Checkout</button>
             </div>
         </div>
     )
