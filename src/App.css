@@ -5,11 +5,72 @@
 body{
   background: black;
   overflow-x: hidden;
+  width: 100%;
 }
 @media screen and (max-width: 800px) {
-
+  .header{
+    height: 50px !important;
+  }
+  .header h1{
+    font-size: 20px;
+  }
+  #nav-icon1, #nav-icon2, #nav-icon3, #nav-icon4 {
+    width: 40px !important;
+    height: 20px !important;
+    position: relative;
+    margin: 0px 12px;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+  }
+  
+  #nav-icon1 span, #nav-icon3 span, #nav-icon4 span {
+    display: block;
+    position: absolute;
+    height: 6px;
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+  }
+  
+  #nav-icon1 span:nth-child(1) {
+    top: 0px !important;
+  }
+  
+  #nav-icon1 span:nth-child(2) {
+    top: 8px !important;
+  }
+  
+  #nav-icon1 span:nth-child(3) {
+    top: 16px !important;
+  }
+  .cart-icon{
+    width: 24px !important;
+  }
+  .contain-body{
+    padding: 0 !important;
+    width: 100%;
+    display: flex;
+    justify-content: center !important;
+  }
   .slider{
-    margin: 80px auto 0 auto !important;
+    margin: 60px auto 0 auto !important;
     justify-content: center !important;
   }
   .whole{
@@ -17,9 +78,15 @@ body{
     justify-content: center !important;
   }
   .right{
+    display:flex;
+    flex-direction: column;
+    justify-content: center !important;
     margin: 0 !important;
   }
   .contain-mb{
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
     margin: 0 !important;
   }
   .logo img{
@@ -27,7 +94,7 @@ body{
     width: 200px !important;
   }
   .down, .up{
-    left: 40% !important;
+    left: 50% !important;
   }
   .flex{
     flex-direction: column;
@@ -50,22 +117,36 @@ body{
   .react-calendar{
     width: 300px !important;
   }
+  .cart-header{
+    height: 50px !important;
+  }
+  .cart-header h1{
+    font-size: 34px;
+  }
   .cart-item{
     height: 40px !important;
     font-size: 10px;
+    width: 100% !important;
   }
   .flex-item{
     display: flex;
   }
   .item-font{
     font-size: 10px;
-    width: 90px;
+    width: 80px;
+  }
+  .cart-box{
+    height: 40px !important;
+  }
+  .cart-box p{
+    font-size: 12px;
   }
   .trash{
     height: 20px !important;
     width: 20px !important;
   }
   .image-container{
+    margin: 0 !important;
     height: 40px !important;
   }
   .item-background{
@@ -87,10 +168,11 @@ body{
   }
   .update input{
     height: 12px !important;
+    width: 12px !important;
     font-size: 8px !important;
   }
   .update button{
-    width:25px !important;
+    width:30px !important;
     height: 15px !important;
     font-size: 8px !important;
   }
@@ -98,7 +180,7 @@ body{
 
 
 .header{
-  height: 80px;
+  height: 60px;
   background: black;
   color:rgb(216, 217, 218);
   display: flex;
@@ -120,12 +202,14 @@ body{
 }
 .top-nav{
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #nav-icon1, #nav-icon2, #nav-icon3, #nav-icon4 {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 30px;
   position: relative;
-  margin: 0px 12px;
+  margin: 0;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
@@ -140,8 +224,8 @@ body{
 #nav-icon1 span, #nav-icon3 span, #nav-icon4 span {
   display: block;
   position: absolute;
-  height: 6px;
-  width: 100%;
+  height: 4px;
+  width: 60%;
   background: #FFFFFF;
   border-radius: 9px;
   opacity: 1;
@@ -209,9 +293,9 @@ body{
   border-left: grey 1px solid;
   background:black;
   width: 400px;
-  height: 100vh;
+  height: 94%;
   right:0;
-  z-index: 1;
+  z-index: 3;
 }
 #menu ul{
   display:flex;
@@ -234,6 +318,9 @@ body{
   display: flex;
   margin: 30px 0;
   justify-content: center;
+}
+table{
+  margin: 0 16px;
 }
 table, th, td {
   color: white;
@@ -275,6 +362,7 @@ th img{
   z-index: -1;
 }
 .FAQs{
+  margin: 0 16px;
   color:white;
 }
 .single{
@@ -297,6 +385,7 @@ th img{
 .contain-body{
   width: 100%;
   display: flex;
+  padding-left:15%;
 }
 .slider {
   margin-top: 80px;
@@ -333,16 +422,7 @@ th img{
   height: 50vw;
   max-height: 720px;
 }
-.slider::after{
-  top: 140px;
-  left: 0;
-  content:'';
-  position: absolute;
-  width: 650px;
-  height: 650px;;
-  z-index: -1;
-  transition: all .2s ease-in-out;
-}
+
 .slider::after:hover{
   transform: scale(1.1);
   transition-duration: 0.3s;
@@ -383,6 +463,13 @@ th img{
 }
 .right{
   margin-left:30px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center !important;
+}
+.logo{
+  display:flex;
+  justify-content: center;
 }
 .logo img{
   margin-top: 100px;
@@ -395,13 +482,12 @@ th img{
   animation-delay: 0.6s;
 }
 .contain-mb{
-  margin-left: 60px;
   margin-top: 50px;
   opacity: 0;
   display:flex;
-  width: 200px;
-  height: 100%;
+  width: 100%;
   flex-direction: column;
+  justify-items: center;
   animation-name: fadein;
   animation-fill-mode: forwards;
   animation-timing-function: ease;
@@ -409,12 +495,11 @@ th img{
   animation-delay: 1.0s;
 }
 .mb{
-  margin: 10px 0;
+  margin: 10px auto;
   font-size: 1.5rem;
-  width: 100% !important;
   padding: 0.25em 1em;
   border-radius: 0.25em;
-  width: 100px;
+  width: 180px;
   transition-duration: 1s ease;
 
 }
@@ -466,7 +551,7 @@ th img{
 }
 .up{
   position: absolute;
-  top: -80px;
+  top: -60px;
   left: 50%;
   margin-top: 6px;
   animation-name: bounce-up;
@@ -475,7 +560,7 @@ th img{
 .down{
   position: absolute;
   left: 50%;
-  top: 102%;
+  top: 104%;
   animation-name: bounce-down;
   animation-timing-function: ease;
 }
@@ -559,9 +644,6 @@ margin: 0;
   align-items: center;
   color:white;
 }
-.cart-item div{
-
-}
 .image-container{
   margin: 8px 8px;
   height: auto;
@@ -628,12 +710,12 @@ margin: 0;
   height: 20px;
 }
 .contain-edit{
-  padding: 0 10px;
-  border-left: #D8D9DA solid 1px;
   display:flex;
   justify-content: center;
-  text-align: center;
   align-items: center;
+}
+.contain-edit button{
+  margin: 0 auto;
 }
 .trash-container{
   display:flex;

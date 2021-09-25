@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 //Icons
 import { IoIosTrash } from "react-icons/io";
@@ -11,11 +12,16 @@ Number.prototype.toFixedDown = function(digits) {
 };
 
 const CartItem = (props) => {
+    //use useHistory
+    const history = useHistory();
+
     //State of quantity
     const [amount, setAmount] = useState(props.quantity)
+
     //Rerender componenet after updating an items quantity
     useEffect(() => {
         document.getElementsByClassName("update-amount").value = "";
+        console.log(props.index);
     }, [amount])
 
     //import correct image
@@ -35,6 +41,17 @@ const CartItem = (props) => {
         y.classList.add('appear-flex');
 
         localStorage.setItem('num', props.index);
+    }
+    //edit button on rental item
+    const edit = () => {
+        //1. get array of cart from localstorage
+        const itemCart = JSON.parse(localStorage.getItem('cart'));
+        //2. get rid of new 
+        itemCart.splice(props.index, 1)
+        //3. put back into localstorage
+        localStorage.setItem('cart', JSON.stringify(itemCart));
+        //4.go back to rental page
+        history.push('/rent/' + props.type);
     }
     //update quantity funtion
     const update = () => {
@@ -67,7 +84,6 @@ const CartItem = (props) => {
             document.getElementById("update-amount-" + props.index).value = '';
         }
     }
-    console.log(props)
     if (props.own === "rent"){
         return(
             <div className="border-top">
@@ -82,15 +98,10 @@ const CartItem = (props) => {
                             {props.name}
                         </div>
                         <div className="item-price">
-                            ${props.price}
+                            ${props.price} x {props.quantity} days
                         </div>
                         <div className="update">
-                            <div className="align">
-                                <p>x {props.quantity} days</p>
-                            </div>
-                            <div className="contain-edit">
-                                <button onClick={update}>Edit</button>
-                            </div>
+                            <button onClick={edit}>Edit</button>
                         </div>
                     </div>
                     <div className="flex-item item-font">

@@ -30,7 +30,6 @@ const Cart = (props) => {
     //Rerender componenet after updating an items quantity
     useEffect(() => {
         document.getElementsByClassName("update-amount").value = "";
-        console.log("cart refreshed")
     }, [total]);
     
       //Get array of cart from localstorage
@@ -48,7 +47,7 @@ const Cart = (props) => {
     const checkout = () => {
         history.push('/checkout');
     }
-    console.log(itemCart);
+    
     if (itemCart !== null) {
     return(
         <div>
